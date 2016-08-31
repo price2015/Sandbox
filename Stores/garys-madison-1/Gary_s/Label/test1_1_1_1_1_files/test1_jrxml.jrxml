@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 5.1.0  -->
+<!-- 2016-08-31T01:10:19 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StandardLabel" language="groovy" pageWidth="200" pageHeight="79" columnWidth="200" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e5d55084-2116-4950-a38c-928db0240d41">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Gary_s/Label/test1_1_1_1_1"/>
+	<property name="ireport.jasperserver.url" value="http://192.168.1.23:25082/jasperserver/services/repository/"/>
+	<property name="ireport.jasperserver.report.resource" value="/ShopRite-Caldwell_1_1_11/Label/test1_1_1_1_1_files/test1_jrxml"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Vision"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="Items" class="java.util.List" isForPrompting="false">
+		<property name="AdvancedItemSearcher" value=""/>
+		<parameterDescription><![CDATA[Search for the item numbers for this report]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FirstPrice" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SecondPrice" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FlexPrice" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from (
+  select  distinct on(item_num)item_num ,$P!{FirstPrice} ,
+   item.descr, size_descr, pri_vndr,item_vintage, unit_price,sale_price,enddate,shlf_price,
+  item2ean(item_num) as barcode
+  from item
+  where $X{IN,item_num,Items}
+)subquery]]>
+	</queryString>
+	<field name="item_num" class="java.lang.String"/>
+	<field name="price1" class="java.lang.String"/>
+	<field name="descr" class="java.lang.String"/>
+	<field name="size_descr" class="java.lang.String"/>
+	<field name="pri_vndr" class="java.lang.String"/>
+	<field name="item_vintage" class="java.lang.String"/>
+	<field name="unit_price" class="java.math.BigDecimal"/>
+	<field name="sale_price" class="java.math.BigDecimal"/>
+	<field name="enddate" class="java.sql.Date"/>
+	<field name="shlf_price" class="java.math.BigDecimal"/>
+	<field name="barcode" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="79" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="9" y="10" width="141" height="27" uuid="848847e3-0d14-4c23-9be4-184ddc129175">
+					<property name="net.sf.jasperreports.text.truncate.at.char" value=""/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="84" y="37" width="116" height="33" uuid="5a7d0ade-f2b3-4f1f-bf72-1d567ec26e81"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA['$'+$F{price1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="62" width="19" height="13" isRemoveLineWhenBlank="true" uuid="8064d025-e0e5-4752-82d8-9bdf1608e4fa"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[vtg:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="99" y="62" width="31" height="13" uuid="4b49bce5-b5b3-4bd5-b9e1-de4d0c6ec496"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_vintage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="62" width="46" height="13" uuid="735f8a64-9c27-4e1f-8ebf-d56085d17a4f"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{size_descr}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="9" y="38" width="70" height="32" uuid="ced77172-7d92-4bba-b23f-5bdc976cc877">
+					<property name="com.jaspersoft.studio.unit.moduleWidth" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+				</reportElement>
+				<jr:EAN13 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" quietZone="0.0">
+					<jr:codeExpression><![CDATA[$F{barcode}]]></jr:codeExpression>
+				</jr:EAN13>
+			</componentElement>
+			<textField>
+				<reportElement x="9" y="62" width="70" height="13" uuid="32ede8aa-77ba-4a9c-89e1-63d5dcff0a96"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA['SKU # ' + $F{item_num}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

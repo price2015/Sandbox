@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 5.1.0  -->
+<!-- 2016-08-31T00:51:48 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BeachLiquors8RowsX4Cols8.5X11PagePortrait" language="groovy" columnCount="3" pageWidth="612" pageHeight="792" columnWidth="189" columnSpacing="9" leftMargin="13" rightMargin="13" topMargin="36" bottomMargin="36" uuid="52c64676-5726-46c6-b7d5-09a769530093">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.reportUnit" value="/washington-state/Label/test1"/>
+	<property name="ireport.jasperserver.url" value="http://192.168.1.23:21848/jasperserver/services/repository/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.report.resource" value="/washington-state/Label/test1_files/test1_jrxml"/>
+	<parameter name="Items" class="java.util.List" isForPrompting="false">
+		<property name="AdvancedItemSearcher" value=""/>
+		<parameterDescription><![CDATA[Search for the item numbers for this report]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FirstPrice" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select *, price1+tax+extra as finalprice
+from (
+select *, (trate/100.0*price1)::numeric(8,2) as tax,
+(extrataxrate*liters*qty)::numeric(8,2) as extra
+from (
+  select $P!{FirstPrice},
+  item_num, item.descr, size_descr, item_vintage, coalesce(liters,0) as liters,
+  statetaxrate+countytaxrate+citytaxrate as trate,
+  coalesce(extrataxrate,0) as extrataxrate
+  from item left join size_description using(size_descr)
+  left join tax on(tax.code=item.tax_flag)
+  where $X{IN,item_num,Items}
+)subquery1
+)subquery2
+where price1 > 0]]>
+	</queryString>
+	<field name="finalprice" class="java.math.BigDecimal"/>
+	<field name="item_num" class="java.lang.String"/>
+	<field name="descr" class="java.lang.String"/>
+	<field name="size_descr" class="java.lang.String"/>
+	<field name="size1" class="java.lang.String"/>
+	<field name="tax" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[sum of tax rates]]></fieldDescription>
+	</field>
+	<field name="extra" class="java.math.BigDecimal"/>
+	<field name="liters" class="java.math.BigDecimal"/>
+	<field name="qty" class="java.lang.Integer"/>
+	<field name="item_vintage" class="java.lang.String"/>
+	<field name="price1" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="72" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="3" width="143" height="13" uuid="afe1a297-ffa0-4527-a3af-e3e3ab724dec"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="16" width="27" height="13" uuid="110703f5-fcb4-493b-b523-233a11fc099c"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{size_descr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="29" y="34" width="32" height="9" uuid="20cdaa9f-3458-4025-89e0-b97be83aa35a"/>
+				<textElement textAlignment="Right">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="34" width="14" height="9" uuid="f871a834-fe9f-43e9-8b9d-688735a7dadb"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{size1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="3" width="26" height="13" uuid="e26160d6-77c6-4627-8240-89c5f4eb6e7c"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_num}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="29" y="46" width="32" height="9" uuid="97fc81b1-4310-4554-b2ab-ef484cc0ac40"/>
+				<textElement textAlignment="Right">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tax}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="29" y="58" width="32" height="9" uuid="64f2ffa6-1243-40e1-b1f0-9bb9d1d7e568"/>
+				<textElement textAlignment="Right">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{extra}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="61" y="34" width="118" height="33" uuid="3a21e4cf-0014-4315-8caa-e54f58f9cf61"/>
+				<textElement textAlignment="Right">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{finalprice}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="46" width="14" height="9" uuid="2ca23648-a738-4212-987a-63e3033babdf"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Tax]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="58" width="14" height="9" uuid="2964baee-ae78-4126-aa62-3e3075c35dcb"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Lit]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="10" y="16" width="35" height="13" uuid="63ba0236-d95f-4f13-a9b7-980e78af36ea"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_vintage}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

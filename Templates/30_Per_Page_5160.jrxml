@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-08-24T14:43:54 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="30_Per_Page_5160" columnCount="3" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="180" columnSpacing="21" leftMargin="7" rightMargin="0" topMargin="36" bottomMargin="36" uuid="29f10f2b-ec04-458a-9ffe-9ad73ef48666">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Berniers/label/CardsRegularPriceandCasePriceStyle2withlogo_1_1_1"/>
+	<property name="ireport.jasperserver.url" value="http://192.168.1.23:35317/jasperserver/services/repository/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.report.resource" value="/Berniers/label/CardsRegularPriceandCasePriceStyle2withlogo_1_1_1_files/Avery 5160"/>
+	<property name="com.jaspersoft.studio.unit." value="inch"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Vision"/>
+	<parameter name="Items" class="java.util.List" isForPrompting="false">
+		<property name="AdvancedItemSearcher" value=""/>
+		<parameterDescription><![CDATA[Search for the item numbers for this report]]></parameterDescription>
+	</parameter>
+	<parameter name="Label_Qty" class="java.lang.String"/>
+	<parameter name="PO" class="java.lang.Long"/>
+	<parameter name="ORDERBY" class="java.lang.String"/>
+	<parameter name="FirstPrice" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="item_num" class="java.lang.String"/>
+	<field name="descr" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="last_modified" class="java.sql.Timestamp"/>
+	<field name="unit_price" class="java.math.BigDecimal"/>
+	<field name="case_retail" class="java.math.BigDecimal"/>
+	<field name="shlf_price" class="java.math.BigDecimal"/>
+	<field name="wc_shlfprce" class="java.math.BigDecimal"/>
+	<field name="cc_shlfprce" class="java.math.BigDecimal"/>
+	<field name="sale_price" class="java.math.BigDecimal"/>
+	<field name="pack_sale_price" class="java.math.BigDecimal"/>
+	<field name="case_sale_price" class="java.math.BigDecimal"/>
+	<field name="sale_type" class="java.lang.String"/>
+	<field name="current_sale_mid" class="java.lang.Integer"/>
+	<field name="itm_mup" class="java.math.BigDecimal"/>
+	<field name="pri_vndr" class="java.lang.String"/>
+	<field name="last_date_sold" class="java.sql.Date"/>
+	<field name="acpr_key" class="java.lang.String"/>
+	<field name="br_deposit" class="java.math.BigDecimal"/>
+	<field name="upc_flag" class="java.lang.String"/>
+	<field name="strtdate" class="java.sql.Date"/>
+	<field name="enddate" class="java.sql.Date"/>
+	<field name="last_vndr" class="java.lang.String"/>
+	<field name="last_date" class="java.sql.Date"/>
+	<field name="tax_flag" class="java.lang.String"/>
+	<field name="full_case_discount" class="java.lang.Integer"/>
+	<field name="mixed_case_discount" class="java.lang.Integer"/>
+	<field name="item_vintage" class="java.lang.String"/>
+	<field name="alt_item" class="java.lang.String"/>
+	<field name="item_location" class="java.lang.String"/>
+	<field name="shelf_onhand" class="java.lang.Integer"/>
+	<field name="shelf_capacity" class="java.lang.Integer"/>
+	<field name="web_flag" class="java.lang.String"/>
+	<field name="special_price" class="java.math.BigDecimal"/>
+	<field name="special_qty" class="java.lang.Integer"/>
+	<field name="new_base_cost" class="java.math.BigDecimal"/>
+	<field name="bc_eff_date" class="java.sql.Date"/>
+	<field name="adj_percent" class="java.lang.Integer"/>
+	<field name="adj_dollar" class="java.math.BigDecimal"/>
+	<field name="notes" class="java.lang.String"/>
+	<field name="long_description" class="java.lang.String"/>
+	<field name="deptsubdept" class="java.lang.String"/>
+	<field name="case_qty" class="java.lang.Integer"/>
+	<field name="pack_qty" class="java.lang.Integer"/>
+	<field name="size_descr" class="java.lang.String"/>
+	<field name="bottle_minimum" class="java.math.BigDecimal"/>
+	<field name="deleted_flag" class="java.lang.String"/>
+	<field name="points" class="java.lang.Integer"/>
+	<field name="kit_flag" class="java.lang.String"/>
+	<field name="allow_manual_discount" class="java.lang.String"/>
+	<field name="free_goods_flag" class="java.lang.String"/>
+	<field name="min_onhand_qty" class="java.lang.Integer"/>
+	<field name="min_reorder_qty" class="java.lang.Integer"/>
+	<field name="max_reorder_qty" class="java.lang.Integer"/>
+	<field name="label_modified" class="java.sql.Timestamp"/>
+	<field name="flags" class="java.lang.String"/>
+	<field name="sug_unit_price" class="java.math.BigDecimal"/>
+	<field name="item_inserted" class="java.sql.Timestamp"/>
+	<field name="whole_item_num" class="java.lang.String"/>
+	<field name="fraction_count" class="java.lang.Integer"/>
+	<field name="inbound_deposit" class="java.math.BigDecimal"/>
+	<field name="alt_inventory_factor" class="java.lang.Integer"/>
+	<field name="imported_item_number" class="java.lang.String"/>
+	<field name="proof" class="java.math.BigDecimal"/>
+	<field name="COLUMN_65" class="java.lang.String"/>
+	<field name="COLUMN_66" class="java.lang.String"/>
+	<field name="COLUMN_67" class="java.math.BigDecimal"/>
+	<field name="barcode" class="java.lang.String"/>
+	<field name="barcode2" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="72" splitType="Prevent">
+			<property name="local_mesure_unitheight" value="inch"/>
+			<textField>
+				<reportElement x="16" y="7" width="110" height="10" uuid="71529054-6a6a-4012-b079-2a5c42e7b613">
+					<property name="net.sf.jasperreports.text.truncate.at.char" value="true"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.###;¤(-#,##0.###)" isBlankWhenNull="true">
+				<reportElement x="51" y="16" width="90" height="20" uuid="eac9feab-9256-455c-adb5-1fbc0b562652"/>
+				<textElement textAlignment="Right">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unit_price}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="56" y="40" width="90" height="31" uuid="5318a2c0-8ad0-42a2-9acf-ac9599c1f8fc"/>
+				<jr:EAN13 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$F{barcode}]]></jr:codeExpression>
+				</jr:EAN13>
+			</componentElement>
+			<textField>
+				<reportElement x="16" y="36" width="36" height="30" uuid="bb37d262-6a2d-440a-b74b-7b5a6ba0b60c"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{size_descr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
